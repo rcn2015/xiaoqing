@@ -19,17 +19,9 @@
         <div class="shop_hd_topNav">
             <div class="shop_hd_topNav_all">
                 <!-- Header TopNav Left -->
-                @if (\Session::has('user_id'))
-
                 <div class="shop_hd_topNav_all_left">
-                    <p>您好<font color="#FF0000">{{\Session::get('uname')}}</font>，欢迎来到<b><a href="/">ShopCZ商城</a></b></p>
+                    <p>您好，欢迎来到<b><a href="/">ShopCZ商城</a></b>[<a href="login">登录</a>][<a href="register">注册</a>]</p>
                 </div>
-                @else
-                <!-- Header TopNav Left End -->
-                <div class="shop_hd_topNav_all_left">
-                    <p>您好，欢迎来到<b><a href="/">ShopCZ商城</a></b>[<a href="/login">登录</a>][<a href="/register">注册</a>]</p>
-                </div>
-                @endif
                 <!-- Header TopNav Left End -->
 
                 <!-- Header TopNav Right -->
@@ -42,8 +34,8 @@
                                 <div class="topNav_menu_bd" style="display:none;" >
                                     <ul>
                                       <li><a title="已买到的商品" target="_top" href="#">已买到的商品</a></li>
-                                      <li><a title="个人主页" target="_top" href="/member">个人主页</a></li>
-                                      <li><a title="我的好友" target="_top" href="/index">我的好友</a></li>
+                                      <li><a title="个人主页" target="_top" href="#">个人主页</a></li>
+                                      <li><a title="我的好友" target="_top" href="#">我的好友</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -53,7 +45,7 @@
                                 <a href="#" class="topNavHover">卖家中心<i></i></a>
                                 <div class="topNav_menu_bd" style="display:none;">
                                     <ul>
-                                      <li><a title="已售出的商品" target="_top" href="/">已售出的商品</a></li>
+                                      <li><a title="已售出的商品" target="_top" href="#">已售出的商品</a></li>
                                       <li><a title="销售中的商品" target="_top" href="#">销售中的商品</a></li>
                                     </ul>
                                 </div>
@@ -80,8 +72,8 @@
                                 <a href="#" class="topNavHover">我的收藏<i></i></a>
                                 <div class="topNav_menu_bd" style="display:none;">
                                     <ul>
-                                      <li><a title="收藏的商品" target="_top" href="/favorite">收藏的商品</a></li>
-                                      <li><a title="收藏的店铺" target="_top" href="/favorite">收藏的店铺</a></li>
+                                      <li><a title="收藏的商品" target="_top" href="#">收藏的商品</a></li>
+                                      <li><a title="收藏的店铺" target="_top" href="#">收藏的店铺</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -136,41 +128,338 @@
         <!-- Header Menu -->
         <div class="shop_hd_menu">
             <!-- 所有商品菜单 -->
-
+                        
             <div class="shop_hd_menu_all_category shop_hd_menu_hover"><!-- 首页去掉 id="shop_hd_menu_all_category" 加上clsss shop_hd_menu_hover -->
                 <div class="shop_hd_menu_all_category_title"><h2 title="所有商品分类"><a href="javascript:void(0);">所有商品分类</a></h2><i></i></div>
                 <div id="shop_hd_menu_all_category_hd" class="shop_hd_menu_all_category_hd">
                     <ul class="shop_hd_menu_all_category_hd_menu clearfix">
-                        <?php foreach($one as $key => $val){ ?>
-                            <?php if($val['parent_id'] == 0){?>
-                                <!-- 单个菜单项 -->
-                                <li id="cat_<?= $key+1?>" class="">
-                                    <h3>
-                                        <a href="" title="<?= $val['cat_id']?>">
-                                            <?= $val['cat_name']?>
-                                        </a>
-                                    </h3>
-                                    <div id="cat_<?= $key+1?>_menu" class="cat_menu clearfix" style="">
-                                        <?php foreach($val['child'] as $v){?>
-                                            <dl class="clearfix">
-                                                <dt>
-                                                    <a href="">
-                                                        <?= $v['cat_name']?>
-                                                    </a>
-                                                </dt>
-                                                <dd>
-                                                    <?php foreach ($v['child'] as $value){ ?>
-                                                        <a href=""><?= $value['cat_name']?></a>
-                                                    <?php } ?>
-                                                </dd>
-                                            </dl>
-                                        <?php }?>
-                                    </div>
-                                </li>
-
-                            <?php  } }?>
+                        <!-- 单个菜单项 -->
+                        <li id="cat_1" class="">
+                            <h3><a href="" title="男女服装">男女服装</a></h3>
+                            <div id="cat_1_menu" class="cat_menu clearfix" style="">
+                                <dl class="clearfix">
+                                    <dt><a href="女装" href="">女装</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                        <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                            
+                                <dl class="clearfix">
+                                    <dt><a href="男装" href="">男装</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                        <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
                         <!-- 单个菜单项 End -->
-                        <li class="more"><a href="">查看更多分类</a></li>
+                                                <li id="cat_2" class="">
+                                                    <h3><a href="" title="鞋包配饰">鞋包配饰</a></h3>
+                                                    <div id="cat_1_menu" class="cat_menu clearfix" style="">
+                                                        <dl class="clearfix">
+                                    <dt><a href="鞋子" href="">鞋子</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                            
+                                                                <dl class="clearfix">
+                                    <dt><a href="包包" href="">包包</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li id="cat_3" class="">
+                                                    <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                                                    <div id="cat_1_menu" class="cat_menu clearfix" style="">
+                                                        <dl class="clearfix">
+                                    <dt><a href="美容" href="">美容</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                            
+                                                                <dl class="clearfix">
+                                    <dt><a href="美妆" href="">美妆</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li id="cat_4" class="">
+                                                    <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                                                    <div id="cat_1_menu" class="cat_menu clearfix" style="">
+                                                        <dl class="clearfix">
+                                    <dt><a href="美容" href="">美容</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                            
+                                                                <dl class="clearfix">
+                                    <dt><a href="美妆" href="">美妆</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li id="cat_5" class="">
+                                                    <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                                                    <div id="cat_1_menu" class="cat_menu clearfix" style="">
+                                                        <dl class="clearfix">
+                                    <dt><a href="美容" href="">美容</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                            
+                                                                <dl class="clearfix">
+                                    <dt><a href="美妆" href="">美妆</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li id="cat_6" class="">
+                                                    <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                                                    <div id="cat_1_menu" class="cat_menu clearfix" style="">
+                                                        <dl class="clearfix">
+                                    <dt><a href="美容" href="">美容</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                            
+                                                                <dl class="clearfix">
+                                    <dt><a href="美妆" href="">美妆</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                    </div>
+                                                </li>
+                                                <li id="cat_7" class="">
+                                                    <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                                                    <div id="cat_1_menu" class="cat_menu clearfix" style="">
+                                                        <dl class="clearfix">
+                                    <dt><a href="美容" href="">美容</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                            
+                                                                <dl class="clearfix">
+                                    <dt><a href="美妆" href="">美妆</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                    </div>
+                                                </li>
+                                                <li id="cat_8" class="">
+                                                    <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                                                    <div id="cat_1_menu" class="cat_menu clearfix" style="">
+                                                        <dl class="clearfix">
+                                    <dt><a href="美容" href="">美容</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                            
+                                                                <dl class="clearfix">
+                                    <dt><a href="美妆" href="">美妆</a></dt>
+                                    <dd>
+                                        <a href="">风衣</a>
+                                        <a href="">长袖连衣裙</a>
+                                        <a href="">毛呢连衣裙</a>
+                                        <a href="">半身裙</a>
+                                        <a href="">小脚裤</a>
+                                        <a href="">加绒打底裤</a>
+                                        <a href="">牛仔裤</a>
+                                        <a href="">打底衫</a>
+                                        <a href="">情侣装</a>
+                                        <a href="">棉衣</a>
+                                        <a href="">毛呢大衣</a>
+                                                                                <a href="">毛呢短裤</a>
+                                    </dd>
+                                </dl>
+                                                    </div>
+                                                </li>
+                                                <li class="more"><a href="">查看更多分类</a></li>
                     </ul>
                 </div>
             </div>
@@ -195,7 +484,7 @@
     </div>
     <div class="clear"></div>
     <!-- Header End -->
-
+    
 
     <!-- Body -wll-2013/03/24 -->
     <div class="shop_bd clearfix">
@@ -211,19 +500,19 @@
                           <dl class=""></dl>
                             @foreach($date as $v)
                             <dl class="">
-                            <dt><a href="{{url('/goods',['id',$v->goods_id])}}" title="" ><img src="frotend/images/{{$v->goods_img}}  " alt="2011城市主题公园亲子游"></a></dt>
+                            <dt><a href="goods/?id={{$v->goods_id}}" title="" ><img src="frotend/images/{{$v->goods_img}}  " alt="2011城市主题公园亲子游"></a></dt>
                             <!-- <dd><h2><a href="http://www.zztuku.com" target="_blank"></a></h2></dd> -->
                           </dl>
                           @endforeach
                         </div>
                       </div>
                     </div>
-                    <script type="text/javascript">movec();</script>
-                    <!-- 图片切换  end -->
+                    <script type="text/javascript">movec();</script> 
+                    <!-- 图片切换  end --> 
                     <div class="clear"></div>
                     <div class="shop_bd_top_center_hot"><img src="frotend/images/index.guanggao.png" /></div>
                 </div>
-
+                
                 <!-- 右侧 -->
                 <div class="shop_bd_top_right clearfix">
                     <div class="shop_bd_top_right_quickLink">
@@ -231,7 +520,7 @@
                         <a href="" class="register" title="免费注册"><i></i>免费注册</a>
                         <a href="" class="join" title="商家开店" ><i></i>帮助中心</a>
                     </div>
-
+                    
                     <div class="shop_bd_top_right-style1 nc-home-news">
                         <ul class="tabs-nav">
                             <li><a href="javascript:void(0);" class="hover">商城广告</a></li>
@@ -250,19 +539,19 @@
                                 <li><a title="如何发货" href="article-13.html">如何发货</a><span>(2011-01-11)</span></li>
                                 <li><a title="查看售出商品" href="article-12.html">查看售出商品</a><span>(2011-01-11)</span></li>
                                 <li><a title="如何管理店铺" href="article-11.html">如何管理店铺</a><span>(2011-01-11)</span></li>
-
-
+                                
+                                
                             </ul>
                         </div>
                     </div>
-
-
+                    
+                    
                 </div>
                 <!-- 右侧 End -->
             </div>
             <div class="clear"></div>
             <!-- 第一块区域 End -->
-
+            
             <!-- 第二块区域 -->
             <div class="shop_bd_2 clearfix">
                 <!-- 特别推荐 -->
@@ -275,127 +564,61 @@
                     <div class="tuijian_content">
                         <div id="tuijian_content_1" class="tuijian_shangpin" style="display: block;">
                             <ul>
+                                @foreach($best as $v)
                                 <li>
                                     <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">11111111棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
+                                        <dt><a href=""><img src="frotend/images/{{$v->goods_img}}" width="160px" height="121px" /></a></dt>
+                                        <dd><a href="">{{$v->goods_name}}</a></dd>
+                                        <dd> 商城价：<em>{{$v->shop_price}}</em>元</dd>
                                     </dl>
                                 </li>
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
+                                @endforeach
                             </ul>
                         </div>
-
+                        
                         <div id="tuijian_content_2" class="tuijian_shangpin">
                             <ul>
+                                @foreach($hot as $v)
                                 <li>
                                     <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">2222222棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
+                                        <dt><a href=""><img src="frotend/images/{{$v->goods_img}}"   width="160px" height="121px" /></a></dt>
+                                        <dd><a href="">{{$v->goods_name}}</a></dd>
+                                        <dd> 商城价：<em>{{$v->shop_price}}</em>元</dd>
                                     </dl>
                                 </li>
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
+                                @endforeach
                             </ul>
                         </div>
                         <div id="tuijian_content_3" class="tuijian_shangpin tuijian_content">
                             <ul>
+                                @foreach($new as $v)
                                 <li>
                                     <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">3333333全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
+                                        <dt><a href=""><img src="frotend/images/{{$v->goods_img}}"  width="160px" height="121px" /></a></dt>
+                                        <dd><a href="">{{$v->goods_name}}</a></dd>
+                                        <dd> 商城价：<em>{{$v->shop_price}}</em>元</dd>
                                     </dl>
                                 </li>
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
-                                <li>
-                                    <dl>
-                                        <dt><a href=""><img src="frotend/images/365_7d5e08127b8d6799209674ecffbfc624.jpg_small.jpg" /></a></dt>
-                                        <dd><a href="">外贸田园绗缝全棉布艺双人沙发垫沙发巾飘窗垫素雅黄花</a></dd>
-                                        <dd> 商城价：<em>256.00</em>元</dd>
-                                    </dl>
-                                </li>
-
+                                @endforeach
                             </ul>
                         </div>
-
+                        
                     </div>
 
                 </div>
                 <!-- 特别推荐 End -->
-
+                
                 <!-- 首发 -->
                 <div class="shop_bd_shoufa"><img src="frotend/images/shoufa.jpg" /></div>
                 <!-- 首发 End -->
-
+                
             </div>
             <div class="clear"></div>
             <!-- 第二块区域 End -->
-
+            
             <!-- 第三块区域 男女服饰 -->
             <div class="shop_bd_home_block clearfix">
-
+                
                 <!-- 左边 -->
                 <div class="shop_bd_home_block_left">
                     <div class="shop_bd_home_block_left_logo block_nvzhuang_logo"></div>
@@ -415,7 +638,7 @@
                                 <a href="">半身裙</a>
                             </dd>
                         </dl>
-
+                        
                         <dl class="clearfix">
                             <dt>男装</dt>
                             <dd>
@@ -430,14 +653,14 @@
                                 <a href="">内衣内裤</a>
                             </dd>
                         </dl>
-
+                        
                     </div>
                     <div class="shop_bd_home_block_left_pic">
                         <a href=""><img src="frotend/images/web-1-13_53bfbfc958cb55a435545033bd075bf3.png"/></a>
                     </div>
                 </div>
                 <!-- 左边 End -->
-
+                
                 <!-- 中间 -->
                 <div class="shop_bd_home_block_center">
                     <ul class="tabs-nav">
@@ -452,7 +675,7 @@
                                     <dd>商城价：<em>182.00</em>元</dd>
                                 </dl>
                             </li>
-
+                            
                             <li>
                                 <dl>
                                     <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
@@ -460,7 +683,7 @@
                                     <dd>商城价：<em>182.00</em>元</dd>
                                 </dl>
                             </li>
-
+                            
                             <li>
                                 <dl>
                                     <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
@@ -468,7 +691,7 @@
                                     <dd>商城价：<em>182.00</em>元</dd>
                                 </dl>
                             </li>
-
+                            
                             <li>
                                 <dl>
                                     <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
@@ -476,7 +699,7 @@
                                     <dd>商城价：<em>182.00</em>元</dd>
                                 </dl>
                             </li>
-
+                            
                             <li>
                                 <dl>
                                     <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
@@ -484,7 +707,7 @@
                                     <dd>商城价：<em>182.00</em>元</dd>
                                 </dl>
                             </li>
-
+                            
                             <li>
                                 <dl>
                                     <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
@@ -492,12 +715,12 @@
                                     <dd>商城价：<em>182.00</em>元</dd>
                                 </dl>
                             </li>
-
+                            
                         </ul>
                     </div>
                 </div>
                 <!-- 中间 End -->
-
+                
                 <!-- 右边商品排行 -->
                 <div class="shop_bd_home_block_right">
                     <div class="title"><h3>商品排行</h3></div>
@@ -538,7 +761,7 @@
                                 <dd class="goods-price"><em>398.00</em></dd>
                             </dl>
                         </li>
-
+                        
                         <li class="normal">
                             <i>4</i>
                             <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
@@ -555,12 +778,12 @@
                             <i>7</i>
                             <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
                         </li>
-
+                        
                     </ol>
                     <div class="saletop-list_adv_pic"><a href=""><img src="frotend/images/web-3-38_ff9bd2d724f7138cec1b1937000f4feb.jpg" /></a></div>
                 </div>
                 <!-- 右边商品排行 -->
-
+                
                 <!-- 品牌展示 -->
                 <div class="shop_bd_home_block_bottom">
                     <ul class="">
@@ -575,12 +798,385 @@
                     </ul>
                 </div>
                 <!-- 品牌展示 End -->
-
+                
             </div>
             <div clas="clear"></div>
             <!-- 第三块区域 End -->
 
-
+            <!-- 第四块区域 男女服饰 -->
+            <div class="shop_bd_home_block clearfix">
+                
+                <!-- 左边 -->
+                <div class="shop_bd_home_block_left">
+                    <div class="shop_bd_home_block_left_logo block_nvzhuang_logo"></div>
+                    <div class="shop_hd_home_block_left_class clearfix">
+                        <dl class="clearfix">
+                            <dt>女装</dt>
+                            <dd>
+                                <a href="">棉衣</a>
+                                <a href="">毛呢大衣</a>
+                                <a href="">风衣</a>
+                                <a href="">打底衫</a>
+                                <a href="">情侣装</a>
+                                <a href="">毛呢短裤</a>
+                                <a href="">牛仔裤</a>
+                                <a href="">加绒打...</a>
+                                <a href="">小脚裤</a>
+                                <a href="">半身裙</a>
+                            </dd>
+                        </dl>
+                        
+                        <dl class="clearfix">
+                            <dt>男装</dt>
+                            <dd>
+                                <a href="">羽绒服</a>
+                                <a href="">卫衣</a>
+                                <a href="">长袖T桖</a>
+                                <a href="">长袖衬衫</a>
+                                <a href="">风衣</a>
+                                <a href="">休闲西装</a>
+                                <a href="">棉衣</a>
+                                <a href="">休闲长裤</a>
+                                <a href="">内衣内裤</a>
+                            </dd>
+                        </dl>
+                        
+                    </div>
+                    <div class="shop_bd_home_block_left_pic">
+                        <a href=""><img src="frotend/images/web-1-13_53bfbfc958cb55a435545033bd075bf3.png"/></a>
+                    </div>
+                </div>
+                <!-- 左边 End -->
+                
+                <!-- 中间 -->
+                <div class="shop_bd_home_block_center">
+                    <ul class="tabs-nav">
+                        <li><a href="javascript:void(0);">男女服饰</a></li>
+                    </ul>
+                    <div class="tabs-panel">
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- 中间 End -->
+                
+                <!-- 右边商品排行 -->
+                <div class="shop_bd_home_block_right">
+                    <div class="title"><h3>商品排行</h3></div>
+                    <ol class="saletop-list">
+                        <li class="top clearfix">
+                            <dl>
+                                <dt class="goods-name">
+                                    <a href="">正品都市时尚女装假两件优雅针</a>
+                                </dt>
+                                <dd class="nokey">1</dd>
+                                <dd class="goods-pic">
+                                    <a href=""><span class="thumb size60"><img src="frotend/images/3f81874d594894d19150843c42fb1f8e.jpg_small.jpg" /></span></a>
+                                </dd>
+                                <dd class="goods-price"><em>398.00</em></dd>
+                            </dl>
+                        </li>
+                        <li class="top clearfix">
+                            <dl>
+                                <dt class="goods-name">
+                                    <a href="">正品都市时尚女装假两件优雅针</a>
+                                </dt>
+                                <dd class="nokey">2</dd>
+                                <dd class="goods-pic">
+                                    <a href=""><span class="thumb size60"><img src="frotend/images/3f81874d594894d19150843c42fb1f8e.jpg_small.jpg" /></span></a>
+                                </dd>
+                                <dd class="goods-price"><em>398.00</em></dd>
+                            </dl>
+                        </li>
+                        <li class="top clearfix">
+                            <dl>
+                                <dt class="goods-name">
+                                    <a href="">正品都市时尚女装假两件优雅针</a>
+                                </dt>
+                                <dd class="nokey">3</dd>
+                                <dd class="goods-pic">
+                                    <a href=""><span class="thumb size60"><img src="frotend/images/3f81874d594894d19150843c42fb1f8e.jpg_small.jpg" /></span></a>
+                                </dd>
+                                <dd class="goods-price"><em>398.00</em></dd>
+                            </dl>
+                        </li>
+                        
+                        <li class="normal">
+                            <i>4</i>
+                            <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
+                        </li>
+                        <li class="normal">
+                            <i>5</i>
+                            <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
+                        </li>
+                        <li class="normal">
+                            <i>6</i>
+                            <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
+                        </li>
+                        <li class="normal">
+                            <i>7</i>
+                            <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
+                        </li>
+                        
+                    </ol>
+                    <div class="saletop-list_adv_pic"><a href=""><img src="frotend/images/web-3-38_ff9bd2d724f7138cec1b1937000f4feb.jpg" /></a></div>
+                </div>
+                <!-- 右边商品排行 -->
+                
+                <!-- 品牌展示 -->
+                <div class="shop_bd_home_block_bottom">
+                    <ul class="">
+                        <li><a href=""><img src="frotend/images/354b80528d2fbeefbab33c563532517e.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/1d2dfbead590510046a6522551db8139.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/26247430b09daa1b441b46008bfb6e6e.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/a0ac8c6d2d3dc1470d5876923182a8e2.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/9c5dee77a6ecdafd9e152fed8c6a4e90.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/b175883eba95e793affb1b1ebbbf85a5.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/6e61a1c953e5bc8c5f1ffdac36862245.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/209abd835cd2ce2208f2dc42ba10efb4.gif" /></a></li>
+                    </ul>
+                </div>
+                <!-- 品牌展示 End -->
+                
+            </div>
+            <div clas="clear"></div>
+            <!-- 第四块区域 End -->
+            
+            <!-- 第五块区域 男女服饰 -->
+            <div class="shop_bd_home_block clearfix">
+                
+                <!-- 左边 -->
+                <div class="shop_bd_home_block_left">
+                    <div class="shop_bd_home_block_left_logo block_nvzhuang_logo"></div>
+                    <div class="shop_hd_home_block_left_class clearfix">
+                        <dl class="clearfix">
+                            <dt>女装</dt>
+                            <dd>
+                                <a href="">棉衣</a>
+                                <a href="">毛呢大衣</a>
+                                <a href="">风衣</a>
+                                <a href="">打底衫</a>
+                                <a href="">情侣装</a>
+                                <a href="">毛呢短裤</a>
+                                <a href="">牛仔裤</a>
+                                <a href="">加绒打...</a>
+                                <a href="">小脚裤</a>
+                                <a href="">半身裙</a>
+                            </dd>
+                        </dl>
+                        
+                        <dl class="clearfix">
+                            <dt>男装</dt>
+                            <dd>
+                                <a href="">羽绒服</a>
+                                <a href="">卫衣</a>
+                                <a href="">长袖T桖</a>
+                                <a href="">长袖衬衫</a>
+                                <a href="">风衣</a>
+                                <a href="">休闲西装</a>
+                                <a href="">棉衣</a>
+                                <a href="">休闲长裤</a>
+                                <a href="">内衣内裤</a>
+                            </dd>
+                        </dl>
+                        
+                    </div>
+                    <div class="shop_bd_home_block_left_pic">
+                        <a href=""><img src="frotend/images/web-1-13_53bfbfc958cb55a435545033bd075bf3.png"/></a>
+                    </div>
+                </div>
+                <!-- 左边 End -->
+                
+                <!-- 中间 -->
+                <div class="shop_bd_home_block_center">
+                    <ul class="tabs-nav">
+                        <li><a href="javascript:void(0);">男女服饰</a></li>
+                    </ul>
+                    <div class="tabs-panel">
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                            <li>
+                                <dl>
+                                    <dt><a href=""><img src="frotend/images/04fb225ea46bd1346f330400eedb7ef2.jpg_small.jpg" /></a></dt>
+                                    <dd><a href="">正品都市时尚女装假两件优雅针织衫</a></dd>
+                                    <dd>商城价：<em>182.00</em>元</dd>
+                                </dl>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- 中间 End -->
+                
+                <!-- 右边商品排行 -->
+                <div class="shop_bd_home_block_right">
+                    <div class="title"><h3>商品排行</h3></div>
+                    <ol class="saletop-list">
+                        <li class="top clearfix">
+                            <dl>
+                                <dt class="goods-name">
+                                    <a href="">正品都市时尚女装假两件优雅针</a>
+                                </dt>
+                                <dd class="nokey">1</dd>
+                                <dd class="goods-pic">
+                                    <a href=""><span class="thumb size60"><img src="frotend/images/3f81874d594894d19150843c42fb1f8e.jpg_small.jpg" /></span></a>
+                                </dd>
+                                <dd class="goods-price"><em>398.00</em></dd>
+                            </dl>
+                        </li>
+                        <li class="top clearfix">
+                            <dl>
+                                <dt class="goods-name">
+                                    <a href="">正品都市时尚女装假两件优雅针</a>
+                                </dt>
+                                <dd class="nokey">2</dd>
+                                <dd class="goods-pic">
+                                    <a href=""><span class="thumb size60"><img src="frotend/images/3f81874d594894d19150843c42fb1f8e.jpg_small.jpg" /></span></a>
+                                </dd>
+                                <dd class="goods-price"><em>398.00</em></dd>
+                            </dl>
+                        </li>
+                        <li class="top clearfix">
+                            <dl>
+                                <dt class="goods-name">
+                                    <a href="">正品都市时尚女装假两件优雅针</a>
+                                </dt>
+                                <dd class="nokey">3</dd>
+                                <dd class="goods-pic">
+                                    <a href=""><span class="thumb size60"><img src="frotend/images/3f81874d594894d19150843c42fb1f8e.jpg_small.jpg" /></span></a>
+                                </dd>
+                                <dd class="goods-price"><em>398.00</em></dd>
+                            </dl>
+                        </li>
+                        
+                        <li class="normal">
+                            <i>4</i>
+                            <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
+                        </li>
+                        <li class="normal">
+                            <i>5</i>
+                            <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
+                        </li>
+                        <li class="normal">
+                            <i>6</i>
+                            <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
+                        </li>
+                        <li class="normal">
+                            <i>7</i>
+                            <a href="">2011秋冬新款韩版大码毛领毛呢外套呢子大衣【演示数据】</a>
+                        </li>
+                        
+                    </ol>
+                    <div class="saletop-list_adv_pic"><a href=""><img src="frotend/images/web-3-38_ff9bd2d724f7138cec1b1937000f4feb.jpg" /></a></div>
+                </div>
+                <!-- 右边商品排行 -->
+                
+                <!-- 品牌展示 -->
+                <div class="shop_bd_home_block_bottom">
+                    <ul class="">
+                        <li><a href=""><img src="frotend/images/354b80528d2fbeefbab33c563532517e.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/1d2dfbead590510046a6522551db8139.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/26247430b09daa1b441b46008bfb6e6e.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/a0ac8c6d2d3dc1470d5876923182a8e2.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/9c5dee77a6ecdafd9e152fed8c6a4e90.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/b175883eba95e793affb1b1ebbbf85a5.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/6e61a1c953e5bc8c5f1ffdac36862245.gif" /></a></li>
+                        <li><a href=""><img src="frotend/images/209abd835cd2ce2208f2dc42ba10efb4.gif" /></a></li>
+                    </ul>
+                </div>
+                <!-- 品牌展示 End -->
+                
+            </div>
+            <div clas="clear"></div>
+            <!-- 第五块区域 End -->
+            
             <div class="faq">
                 <dl>
                     <dt>帮助中心</dt>
@@ -590,7 +1186,7 @@
                     <dd><a href=""><span>我要买</span></a></dd>
                     <dd><a href=""><span>忘记密码</span></a></dd>
                 </dl>
-
+                
                 <dl>
                     <dt>店主之家</dt>
                     <dd><a href=""><span>如何申请开店</span></a></dd>
@@ -599,7 +1195,7 @@
                     <dd><a href=""><span>查看已售商品</span></a></dd>
                     <dd><a href=""><span>如何管理店铺</span></a></dd>
                 </dl>
-
+                
                 <dl>
                     <dt>支付方式</dt>
                     <dd><a href=""><span>公司转账</span></a></dd>
@@ -608,7 +1204,7 @@
                     <dd><a href=""><span>在线支付</span></a></dd>
                     <dd><a href=""><span>如何注册支付</span></a></dd>
                 </dl>
-
+                
                 <dl>
                     <dt>售后服务</dt>
                     <dd><a href=""><span>退款申请</span></a></dd>
@@ -617,16 +1213,16 @@
                     <dd><a href=""><span>退换货政策</span></a></dd>
                     <dd><a href=""><span>联系卖家</span></a></dd>
                 </dl>
-
+                
                 <dl>
                     <dt>客服中心</dt>
                     <dd><a href=""><span>修改收货地址</span></a></dd>
                     <dd><a href=""><span>商品发布</span></a></dd>
                     <dd><a href=""><span>会员修改个人</span></a></dd>
                     <dd><a href=""><span>会员修改密码</span></a></dd>
-
+                    
                 </dl>
-
+                
                 <dl>
                     <dt>关于我们</dt>
                     <dd><a href=""><span>合作及洽谈</span></a></dd>
@@ -634,8 +1230,8 @@
                     <dd><a href=""><span>联系我们</span></a></dd>
                     <dd><a href=""><span>关于Shop</span></a></dd>
                 </dl>
-
-
+                
+                
             </div>
             <div class="clear"></div>
     </div>

@@ -35,7 +35,6 @@
 						<dd><input type="submit" value="登  录" class="submit"/> <a href="" class="forget">忘记密码?</a></dd>
 					</dl>
 				</form>
-			
 				<dl>
 					<dt>&nbsp;</dt>
 					<dd> 还不是本站会员？立即 <a href="register" class="register">注册</a></dd>
@@ -44,7 +43,7 @@
 					<dt>&nbsp;</dt>
 					<dd>
 						<p>您可以用合作伙伴账号登录：</p>
-						<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101427412&redirect_uri=http://shop_item.com/login/qq_login&state=xiaoqing" class="qq"></a>
+						<a href="" class="qq"></a>
 						<a href="" class="sina"></a>
 					</dd>
 				</dl>

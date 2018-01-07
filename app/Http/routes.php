@@ -1,5 +1,5 @@
 <?php
-use Gregwar\Captcha\CaptchaBuilder;
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -15,7 +15,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 //     return view('welcome');
 // });
 
-
+//Route::get('/',['as'=>'frontend','uses'=>'IndexController@index']);
 
 /*
 |--------------------------------------------------------------------------
@@ -31,78 +31,42 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 //前台路由群组
 Route::group(['middleware' => ['web'],'namespace'=>'frontend'], function () {
-    //前台首页
     Route::get('/index',['uses'=>'IndexController@index']);
-    Route::get('/flow',['uses'=>'Controller@cates']);
-    Route::get('/class',['uses'=>'ClassController@index']);
-
-    //管理收货地址
     Route::get('/address',['uses'=>'AddressController@index']);
-
-    //编辑收货地址
     Route::get('/address_edit',['uses'=>'Address_editController@index']);
-
-    //评价管理
     Route::get('/comment',['uses'=>'CommentController@index']);
-
-    //错误页面
     Route::get('/error',['uses'=>'ErrorController@index']);
-
-    //收藏页面
     Route::get('/favorite',['uses'=>'FavoriteController@index']);
-
-    //购物车
     Route::get('/flow',['uses'=>'FlowController@index']);
     Route::get('/flow2',['uses'=>'Flow2Controller@index']);
-
-    //商品详情展示
-    Route::any('/goods/id/{id}',['uses'=>'GoodsController@index']);
-    //Route::any('/goods',['uses'=>'GoodsController@index']);
+    Route::get('/address',['uses'=>'Flow2Controller@add']);
+    Route::get('/goods',['uses'=>'GoodsController@index']);
     Route::get('/list',['uses'=>'ListController@index']);
-
-    //前台登陆
     Route::get('/login',['uses'=>'LoginController@index']);
     Route::any('/login/loginnew',['uses'=>'LoginController@loginnew']);
-    Route::any('/login/qq_login',['uses'=>'LoginController@qq_login']);
-
-    //个人中心   编辑个人资料
     Route::get('/member',['uses'=>'MemberController@index']);
     Route::get('/member_info',['uses'=>'Member_infoController@index']);
-
-    //省市区三级联动
-    Route::any('/flow2/add','Flow2Controller@add');
-    Route::any('/address/add','addressController@add');
-
-    //添加收货地址
-    Route::any('/insert','Flow2Controller@insert');
-    Route::any('/new_insert','AddressController@insert');
-
-    //订单
     Route::get('/order',['uses'=>'OrderController@index']);
-
-    //前台修改密码
     Route::get('/password_eidt',['uses'=>'Password_eidtController@index']);
-
-    //注册
     Route::get('/register',['uses'=>'RegisterController@index']);
     Route::any('/register/add',['uses'=>'RegisterController@add']);
-
-    //laravel自带验证写入session
-    Route::any('captcha', function(){
-        $builder = new CaptchaBuilder;
-        $builder->build();
-        Session::put('captcha',$builder->getPhrase()); //存储验证码
-        return response($builder->output())->header('Content-type','image/jpeg');
-    });
-
-
+    Route::any('/flow2/add',['uses'=>'Flow2Controller@add']);
+    Route::any('/flow2/find',['uses'=>'Flow2Controller@find']);
+    Route::any('/flow2/insert',['uses'=>'Flow2Controller@insert']);
+    Route::any('/flow/update',['uses'=>'FlowController@update']);
+    Route::any('/flow/delete',['uses'=>'FlowController@delete']);
+    Route::any('/flow/add',['uses'=>'FlowController@add']);
+    Route::any('/order/pay',['uses'=>'OrderController@pay']);
+//    Route::any('/order/paye',['uses'=>'OrderController@paye']);
 });
 
 //后台路由群组
-Route::group(['middleware' => ['web','admin'],'namespace'=>'Admin'], function () {
+Route::group(['middleware' => ['web'],'namespace'=>'admin'], function () {
     Route::group(['prefix'=>'admin'],function(){
+    // Route::get('/','LoginController@index');//登录
+    //Route::get('/Product','Admin\ProductController@index');//商品列表
         //后台展示/
-        Route::get('/index','IndexController@index');//首页展示
+        Route::get('/Index','IndexController@index');//首页展示
         Route::get('/Login','LoginController@index');//登录
         Route::post('/Logins','LoginController@login');//登录
 
@@ -110,7 +74,6 @@ Route::group(['middleware' => ['web','admin'],'namespace'=>'Admin'], function ()
         Route::post('/Addzhu','ZhuController@add');//（注册添加）
         Route::get('/Product','ProductController@index');//商品列表
         Route::get('/Addproduct','ProductController@add');//添加商品
-        Route::post('/Productadd','ProductController@adds');//添加商品类别
 
         Route::get('/Article','ArticleController@index');   //品牌列表 
         Route::get('/Addarticle','ArticleController@add');//添加品牌列表
@@ -138,12 +101,8 @@ Route::group(['middleware' => ['web','admin'],'namespace'=>'Admin'], function ()
         Route::get('/Product_category','Product_categoryController@index');//分类添加
 
         Route::get('/Backup','BackupController@index');//数据备份
-        Route::get('/Mobile','MobileController@index');//仓库
-        Route::any('/Mobile/sanji','MobileController@san');//三级联动
-        Route::any('/Mobile/add','MobileController@add');//三级联动添加
-        Route::get('/Theme','ThemeController@index');//仓库展示
-        Route::any('/theme/delete/id/{id}',['uses'=>'ThemeController@delete']);//仓库删除
-        
+        Route::get('/Mobile','MobileController@index');//手机版
+        Route::get('/Theme','ThemeController@index');//设置模板
         Route::get('/Manager_log','Manager_logController@index');//操作记录
         Route::any('login/yan',['uses'=>'LoginController@yan']);//验证码
     });
@@ -152,6 +111,5 @@ Route::group(['middleware' => ['web','admin'],'namespace'=>'Admin'], function ()
 //后台登陆群组
 Route::group(['middleware'=>['web'],'namespace'=>'Admin'],function(){
     Route::match(['get','post'],'admin/login','LoginController@index');
-    Route::match(['get','post'],'admin/Index','IndexController@index');
 });
 

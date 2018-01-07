@@ -9,8 +9,7 @@
    <!-- 当前位置 -->
 <div id="urHere">DouPHP 管理中心<b>></b><strong>添加商品</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
             <h3><a href="product.html" class="actionBtn">商品列表</a>添加商品</h3>
-    <form action="/admin/Productadd" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <form action="product.php?rec=insert" method="post" enctype="multipart/form-data">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="90" align="right">商品名称</td>
@@ -21,12 +20,14 @@
       <tr>
        <td align="right">商品分类</td>
        <td>
-        <select name="good_cat">
+        <select name="cat_id">
          <option value="0">未分类</option>
-            @foreach($data as $v)
-            <option value="{{$v->cat_id}}">{{$v->cat_name}}</option>
-            @endforeach
-            </select>
+                           <option value="1"> 电子数码</option>
+                                    <option value="4">- 智能手机</option>
+                                    <option value="5">- 平板电脑</option>
+                                    <option value="2"> 家居百货</option>
+                                    <option value="3"> 母婴用品</option>
+                          </select>
        </td>
       </tr>
       <tr>

@@ -1,7 +1,16 @@
 @extends('layouts.frontend_layouts')
-@section('content')	
-<base href="/frotend/">
+@section('content')
+    <script type="text/javascript" src="frotend/js/jquery.js" ></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var id = $(".goods_id").val();
+            var num = $(".good_nums").val();
+            $(".goods_sub_gou").attr('href',"/flow/add?id="+id+"&num="+num);
+        });
+    </script>
 <title>商品详细</title>
+	<!-- 面包屑 注意首页没有 -->
+	<base href="/frotend/">
 	<div class="shop_hd_breadcrumb">
 		<strong>当前位置：</strong>
 		<span>
@@ -12,7 +21,7 @@
 		</span>
 	</div>
 	<div class="clear"></div>
-	<!-- Goods Body -->
+	<!-- 面包屑 End -->
 	<div class="shop_goods_bd clear">
 
 		<!-- 商品展示 -->
@@ -24,23 +33,28 @@
 				<script type="text/javascript" src="js/lib.js"></script>
 				<script type="text/javascript" src="js/163css.js"></script>
 				<div id="preview">
-					<div class=jqzoom id="spec-n1" onClick="window.open('/')"><IMG height="350" src="images/{{$data->goods_img}}" jqimg="images/{{$data->goods_img}}" width="350">
+                    @foreach($data as $v)
+					    <div class=jqzoom id="spec-n1" onClick="window.open('/')"><IMG height="350" src="images/{{$v->goods_img}}" jqimg="images/{{$v->goods_img}}" width="350">
 						</div>
 						<div id="spec-n5">
 							<div class=control id="spec-left">
 								<img src="images/left.gif" />
 							</div>
 							<div id="spec-list">
+
 								<ul class="list-h">
-									<li><img src="images/{{$data->goods_img}}"> </li>	
-								</ul>
+                                    {{--@foreach($data as $v)--}}
+                                        <li><img src="images/{{$v->goods_img}}"> </li>
+                                    {{--@endforeach--}}
+                                </ul>
 							</div>
 							<div class=control id="spec-right">
 								<img src="images/right.gif" />
 							</div>
-							
 					    </div>
+                    @endforeach
 					</div>
+
 
 					<SCRIPT type=text/javascript>
 						$(function(){			
@@ -84,37 +98,49 @@
 					<!-- 京东商品展示 End -->
 
 			</div>
+
 			<div class="shop_goods_show_right">
+                @foreach($data as $v)
+                        <input type="hidden" value="{{$v->goods_id}}" class="goods_id"/>
 				<ul>
 					<li>
-						<strong style="font-size:14px; font-weight:bold;">&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->goods_name}}</strong>
+                        <label>商品名：</label>
+						<strong style="font-size:20px; font-weight:bold;">{{$v->goods_name}}</strong>
 					</li>
+                    <li>
+                        <label>促销：</label>
+                        @foreach($sales as $val)
+                        <strong style="font-size:14px; font-weight:bold;">{{$val->com}}</strong>
+                        @endforeach
+                    </li>
 					<li>
 						<label>价格：</label>
-						<span><strong>{{$data->shop_price}}</strong>元</span>
+						<span><strong>{{$v->shop_price}}</strong>元</span>
 					</li>
 					<li>
-						<label>运费：</label>
-						<span>卖家承担运费</span>
-					</li>
-					<li>
-						<label>累计售出：</label>
-						<span>99件</span>
+						<label>&nbsp累计售出：</label>
+						<span>{{$v->goods_num}}件</span>
 					</li>
 					<li>
 						<label>评价：</label>
-						<span>0条评论</span>
+						<span>{{$v->goods_comment}}条评论</span>
 					</li>
 					<li class="goods_num">
 						<label>购买数量：</label>
-						<span><a class="good_num_jian" id="good_num_jian" href="javascript:void(0);"></a><input type="text" value="1" id="good_nums" class="good_nums" /><a href="javascript:void(0);" id="good_num_jia" class="good_num_jia"></a>(当前库存{{$data->goods_number}}件)</span>
+						<span>
+                            <a class="good_num_jian" id="good_num_jian" href="javascript:void(0);"></a>
+                            <input type="text" value="1" id="good_nums" class="good_nums" />
+                            <a href="javascript:void(0);" id="good_num_jia" class="good_num_jia"></a>(当前库存500件)
+                        </span>
 					</li>
 					<li style="padding:20px 0;">
 						<label>&nbsp;</label>
-						<span><a href="/flow" class="goods_sub goods_sub_gou" >加入购物车</a></span>
+                        <span><a href="/order/pay?id={{$v->goods_id}}" style="height: 50px; height:50px;" class="goods_sub">立即购买</a></span>
+                        <span><a href="" style="height: 50px; height:50px;" class="goods_sub goods_sub_gou">加入购物车</a></span>
+						{{--<span><input type="submit" style="background: red ;height: 42px; width: 100px" value="加入购物车" class="goods_sub"/></span>--}}
 					</li>
 				</ul>
+                @endforeach
 			</div>
 		</div>
 		<!-- 商品展示 End -->
@@ -162,7 +188,23 @@
 							</div>
 						</li>
 
-				
+						<li class="clearfix">
+							<div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+							<div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+							<div class="goods_xiaoliang">
+								<span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+								<span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+							<div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+							<div class="goods_xiaoliang">
+								<span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+								<span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
+							</div>
+						</li>
 
 					</ul>
 				</div>
@@ -170,7 +212,43 @@
 			<!-- 热卖推荐商品 -->
 			<div class="clear"></div>
 
-			
+			<!-- 浏览过的商品 -->
+			<div class="shop_bd_list_bk clearfix">
+				<div class="title">浏览过的商品</div>
+				<div class="contents clearfix">
+					<ul class="clearfix">
+						
+						<li class="clearfix">
+							<div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+							<div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+							<div class="goods_xiaoliang">
+								<span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+								<span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+							<div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+							<div class="goods_xiaoliang">
+								<span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+								<span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+							<div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+							<div class="goods_xiaoliang">
+								<span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+								<span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<!-- 浏览过的商品 -->
 
 		</div>
 		<!-- Goods Left End -->
@@ -187,7 +265,7 @@
 			</div>
 			<div class="shop_goods_bd_xiangqing_content clearfix">
 				<div id="xiangqing_content_1" class="xiangqing_contents clearfix">
-					<p>{{$data->goods_desc}}</p>
+					<p>商品详情----11111</p>
 				</div>
 				<div id="xiangqing_content_2" class="xiangqing_contents clearfix">
 					<p>商品评论----22222</p>
@@ -202,6 +280,4 @@
 
 	</div>
 	<!-- Goods Body End -->
-
-	<!-- Footer - wll - 2013/3/24 -->
 @stop

@@ -1,6 +1,5 @@
 @extends('layouts.frontend_layouts')
 @section('content')	
-<base href="/frotend/">
 <title>个人中心</title>
 	<!-- 我的个人中心 -->
 	<div class="shop_member_bd clearfix">
@@ -23,7 +22,7 @@
 				<dt>我的账户</dt>
 				<dd><span><a href="">个人资料</a></span></dd>
 				<dd><span><a href="">密码修改</a></span></dd>
-				<dd><span><a href="/address">收货地址</a></span></dd>
+				<dd><span><a href="">收货地址</a></span></dd>
 			</dl>
 
 		</div>

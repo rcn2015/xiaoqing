@@ -6,30 +6,35 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 class Flow2Controller extends Controller
 {
-    /**
-     * 收货地址管理页面
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
+        $id = request('id');
         $data=DB::select("select code,name,p_code from tab_regions where p_code=0");
-        return view('frontend.flow2',['data'=>$data]);
-//    	return view('frontend.flow2');
+        $cart=DB::select("select cart.*,goods.goods_img from cart left join goods on cart.goods_id = goods.goods_id where user_id=31");
+        return view('frontend.flow2',['data'=>$data,'cart'=>$cart]);
     }
-
-    /**
-     * 省市区查询
-     * @return  mixed
-     */
     public function add(){
         $p_code = request('code');
         $data=DB::select("select code,name,p_code from tab_regions where p_code='$p_code'");
         return $data;
     }
-    /**
-     * 添加地址
-     */
-    public function insert(){
+    public function find(){
+        $id = request('id');
+        $num = request('num');
+        $data=DB::table('goods')->where('goods_id',$id)->get();
+        $arr=json_decode(json_encode($data), true);
+        DB::table('cart')->insert(
+            [   'user_id'=>31,
+                'goods_id'=>$id,
+                'goods_name' => $arr[0]['goods_name'],
+                'goods_price' => $arr[0]['shop_price'],
+                'buy_number' => $num
+            ]);
+        return redirect('/flow2');
+    }
+
+    public function insert()
+    {
         $consignee = request('consignee');
         $email = request('email');
         $country = request('country');
@@ -39,29 +44,29 @@ class Flow2Controller extends Controller
         $zipcode = request('zipcode');
         $mobile = request('mobile');
 
-        $ch=curl_init();
+        $ch = curl_init();
         $url = 'http://www.api.com/account/insert';
         $data = [
-            'consignee' =>  $consignee,
-            'email'     =>  $email,
-            'country'   =>  $country,
-            'province'  =>  $province,
-            'city'      =>  $city,
-            'address'   =>  $address,
-            'zipcode'   =>  $zipcode,
-            'mobile'    =>  $mobile
+            'consignee' => $consignee,
+            'email' => $email,
+            'country' => $country,
+            'province' => $province,
+            'city' => $city,
+            'address' => $address,
+            'zipcode' => $zipcode,
+            'mobile' => $mobile
         ];
         //curl调用接口
         curl_setopt_array(
-            $ch,[
-            CURLOPT_URL=>$url,
-            CURLOPT_POST=>true,
-            CURLOPT_POSTFIELDS=>$data,
-            CURLOPT_RETURNTRANSFER=>true
+            $ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $data,
+            CURLOPT_RETURNTRANSFER => true
         ]);
-        $res=json_decode(curl_exec($ch),true);
+        $res = json_decode(curl_exec($ch), true);
         curl_close($ch);
-        if($res['status'] == 0){
+        if ($res['status'] == 0) {
             return redirect('/flow2');
         }
     }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,26 +35,160 @@
         <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check'></th>
         <th width="40" align="center">编号</th>
         <th align="left">商品名称</th>
-        <th align="left">简单简介</th>
         <th width="150" align="center">商品分类</th>
-       <th width="80" align="center">关键字</th>
+       <th width="80" align="center">添加日期</th>
         <th width="80" align="center">操作</th>
       </tr>
-
-<?php foreach($data as $k=>$v) {?>
-        <tr>
+            <tr>
         <td align="center"><input type="checkbox" name="checkbox[]" value="15" /></td>
-        <td align="center"><?php echo $v->id?></td>
-        <td><a href=""><?php echo $v->name?></a></td>
-        <td><a href=""><?php echo $v->description?></a></td>
-        <td align="center"><a href=""><?php echo $v->cat_name?></a></td>
-        <td align="center"><?php echo $v->keywords?></td>
+        <td align="center">15</td>
+        <td><a href="product.php?rec=edit&id=15">亨氏Heinz金装粒粒面鳕鱼胡萝卜面</a></td>
+        <td align="center"><a href="product.php?cat_id=3">母婴用品</a></td>
+        <td align="center">2013-06-26</td>
         <td align="center">
                   <a href="product.php?rec=edit&id=15">编辑</a> | <a href="product.php?rec=del&id=15">删除</a>
                  </td>
       </tr>
-      <?php }?>
-          
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="14" /></td>
+        <td align="center">14</td>
+        <td><a href="product.php?rec=edit&id=14">PES宽口套装奶瓶</a></td>
+        <td align="center"><a href="product.php?cat_id=3">母婴用品</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=14">编辑</a> | <a href="product.php?rec=del&id=14">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="13" /></td>
+        <td align="center">13</td>
+        <td><a href="product.php?rec=edit&id=13">法国合生元奶粉</a></td>
+        <td align="center"><a href="product.php?cat_id=3">母婴用品</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=13">编辑</a> | <a href="product.php?rec=del&id=13">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="12" /></td>
+        <td align="center">12</td>
+        <td><a href="product.php?rec=edit&id=12">Pampers帮宝适超薄干爽纸尿裤</a></td>
+        <td align="center"><a href="product.php?cat_id=3">母婴用品</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=12">编辑</a> | <a href="product.php?rec=del&id=12">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="11" /></td>
+        <td align="center">11</td>
+        <td><a href="product.php?rec=edit&id=11">客厅吸顶灯</a></td>
+        <td align="center"><a href="product.php?cat_id=2">家居百货</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=11">编辑</a> | <a href="product.php?rec=del&id=11">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="10" /></td>
+        <td align="center">10</td>
+        <td><a href="product.php?rec=edit&id=10">实木餐桌</a></td>
+        <td align="center"><a href="product.php?cat_id=2">家居百货</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=10">编辑</a> | <a href="product.php?rec=del&id=10">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="9" /></td>
+        <td align="center">9</td>
+        <td><a href="product.php?rec=edit&id=9">衣物收纳箱</a></td>
+        <td align="center"><a href="product.php?cat_id=2">家居百货</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=9">编辑</a> | <a href="product.php?rec=del&id=9">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="8" /></td>
+        <td align="center">8</td>
+        <td><a href="product.php?rec=edit&id=8">创意沙发</a></td>
+        <td align="center"><a href="product.php?cat_id=2">家居百货</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=8">编辑</a> | <a href="product.php?rec=del&id=8">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="7" /></td>
+        <td align="center">7</td>
+        <td><a href="product.php?rec=edit&id=7">MacBook Air笔记本电脑</a></td>
+        <td align="center"><a href="product.php?cat_id=1">电子数码</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=7">编辑</a> | <a href="product.php?rec=del&id=7">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="6" /></td>
+        <td align="center">6</td>
+        <td><a href="product.php?rec=edit&id=6">BlackBerry黑莓9780</a></td>
+        <td align="center"><a href="product.php?cat_id=4">智能手机</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=6">编辑</a> | <a href="product.php?rec=del&id=6">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="5" /></td>
+        <td align="center">5</td>
+        <td><a href="product.php?rec=edit&id=5">ThinkPad笔记本电脑</a></td>
+        <td align="center"><a href="product.php?cat_id=1">电子数码</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=5">编辑</a> | <a href="product.php?rec=del&id=5">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="4" /></td>
+        <td align="center">4</td>
+        <td><a href="product.php?rec=edit&id=4">Amazon Kindle电子书阅读器</a></td>
+        <td align="center"><a href="product.php?cat_id=5">平板电脑</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=4">编辑</a> | <a href="product.php?rec=del&id=4">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="3" /></td>
+        <td align="center">3</td>
+        <td><a href="product.php?rec=edit&id=3">魅族MX2智能手机</a></td>
+        <td align="center"><a href="product.php?cat_id=1">电子数码</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=3">编辑</a> | <a href="product.php?rec=del&id=3">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="2" /></td>
+        <td align="center">2</td>
+        <td><a href="product.php?rec=edit&id=2">苹果iPhone 5手机</a></td>
+        <td align="center"><a href="product.php?cat_id=4">智能手机</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=2">编辑</a> | <a href="product.php?rec=del&id=2">删除</a>
+                 </td>
+      </tr>
+            <tr>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="1" /></td>
+        <td align="center">1</td>
+        <td><a href="product.php?rec=edit&id=1">iPad平板电脑</a></td>
+        <td align="center"><a href="product.php?cat_id=5">平板电脑</a></td>
+        <td align="center">2013-06-26</td>
+        <td align="center">
+                  <a href="product.php?rec=edit&id=1">编辑</a> | <a href="product.php?rec=del&id=1">删除</a>
+                 </td>
+      </tr>
           </table>
     <div class="action">
      <select name="action" onchange="douAction()">

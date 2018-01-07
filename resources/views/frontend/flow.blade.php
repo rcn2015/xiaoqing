@@ -1,6 +1,5 @@
 @extends('layouts.frontend_layouts')
 @section('content')	
-<base href="/frotend/">
 <title>购物车</title>
 <div class="shop_hd_breadcrumb">
 		<strong>当前位置：</strong>
@@ -13,9 +12,12 @@
 	<div class="clear"></div>
 	<!-- 面包屑 End -->
 
+	<!-- Header End -->
+	
 	<!-- 购物车 Body -->
 	<div class="shop_gwc_bd clearfix">
 		<!-- 在具体实现的时候，根据情况选择其中一种情况 -->
+        <?php if(empty($data)) { ?>
 		<!-- 购物车为空 -->
 			<div class="empty_cart mb10">
 				<div class="message">
@@ -23,7 +25,7 @@
 				</div>
 			</div>
 		<!-- 购物车为空 end-->
-		
+		<?php } else { ?>
 		<!-- 购物车有商品 -->
 		<div class="shop_gwc_bd_contents clearfix">
 			<!-- 购物流程导航 -->
@@ -48,26 +50,95 @@
 					</tr>
 				</thead>
 				<tbody>
-
+                <?php $str = 0; ?>
+                @foreach($data as $v)
 					<tr>
-						<td class="gwc_list_pic"><a href=""><img src="images/4_7b5239c3f153ae4b67ff760f54408a5b.jpg_tiny.jpg" /></a></td>
-						<td class="gwc_list_title"><a href="">双层花架简约韩式田园欧式地中海风格宜家纯白架现代花盆架电话架 </a></td>
-						<td class="gwc_list_danjia"><span>￥<strong id="danjia_001">2550.00</strong></span></td>
-						<td class="gwc_list_shuliang"><span><a class="good_num_jian this_good_nums" did="danjia_001" xid="xiaoji_001" ty="-" valId="goods_001" href="javascript:void(0);">-</a><input type="text" value="1" id="goods_001" class="good_nums" /><a href="javascript:void(0);" did="danjia_001" xid="xiaoji_001" ty="+" class="good_num_jia this_good_nums" valId="goods_001">+</a></span></td>
-						<td class="gwc_list_xiaoji"><span>￥<strong id="xiaoji_001" class="good_xiaojis">2550.00</strong></span></td>
-						<td class="gwc_list_caozuo"><a href="">收藏</a><a href="javascript:void(0);" class="shop_good_delete">删除</a></td>
-					</tr>
+						<td class="gwc_list_pic">
+                            <a href=""><img src="frotend/images/{{$v->goods_img}}" whith="100px" height="100px"/></a>
+                        </td>
+						<td class="gwc_list_title">
+                            <ul>
+                                <li><a href="">{{$v->goods_name}}</a></li>
+                                <?php if(!empty($v->sales)){ ?>
+                                    @foreach($v->sales as $k)
+                                        <?php if($k->price < $v->goods_price){ ?>
+                                            <li style="font-size: 10px;color: gray;">{{$k->name}}</li>
+                                        <?php } ?>
+                                    @endforeach
+                                <?php } ?>
+                            </ul>
+                        </td>
+						<td class="gwc_list_danjia">
+                            <?php if(!empty($v->sales)){ ?>
+                                @foreach($v->sales as $k)
+                                <?php switch($k->status){
+                                        case '1':
+                                            if($k->price < $v->goods_price){
+                                                echo "<span>￥<strong id='danjia_001'>".($v->goods_price-$k->ch_price)."</strong></span>";
+                                                echo "(<span><strong id='danjia_001' style='color: red'>￥$v->goods_price - ￥$k->ch_price</strong></span>)";
+                                            }else{
+                                                echo "<span>￥<strong id='danjia_001'>".($v->goods_price)."</strong></span>";
+                                            }
+                                            break;
+                                        case '2':
+                                            echo "<span>￥<strong id='danjia_001'>".$v->goods_price."</strong></span>";
+                                            break;
+                                        case '3':
+                                            echo "<span>￥<strong id='danjia_001'>$v->goods_price</strong></span>";
+                                            break;
+                                } ?>
+                            @endforeach
+                            <?php }else{ ?>
+                                <span>￥<strong id="danjia_001">{{$v->goods_price}}</strong></span>
+                            <?php } ?>
+                        </td>
+						<td class="gwc_list_shuliang">
+                            <input type="hidden" value="{{$v->goods_id}}"/>
+                            <span>
+                                <a class="good_num_jian this_good_nums" id="cart_jian" href="javascript:void(0);">-</a>
+                                <input type="text" value="{{$v->buy_number}}" id="cart_nums" name="num[]" class="good_nums" />
+                                <a href="javascript:void(0);" id="cart_jia" class="good_num_jia this_good_nums" valId="goods_001">+</a>
+                            </span>
+                        </td>
+						<td class="gwc_list_xiaoji">
+                            <?php if(!empty($v->sales)){ ?>
+                            @foreach($v->sales as $k)
+                                    <?php switch($k->status){
+                                        case '1':
+                                            if($k->price < $v->goods_price){
+                                                echo "<span>￥<strong id='cart_price' class='good_xiaojis'>".($v->goods_price * $v->buy_number-$k->ch_price*$v->buy_number)."</strong></span>";
+                                            }else{
+                                                echo "<span>￥<strong id='cart_price' class='good_xiaojis'>".($v->goods_price * $v->buy_number)."</strong></span>";
+                                            }
+                                            break;
+                                        case '2':
+                                                echo "<span>￥<strong id='cart_price' class='good_xiaojis'>".($v->goods_price * $v->buy_number)."</strong></span>";
+                                            break;
+                                        case '3':
+                                            echo "<span>￥<strong id='cart_price' class='good_xiaojis'>".($v->goods_price * $v->buy_number)."</strong></span>";
+                                            break;
+                                    } ?>
+                            @endforeach
+                            <?php }else{ ?>
+                                <span>￥<strong id="cart_price" class="good_xiaojis">{{$v->goods_price * $v->buy_number}}</strong></span>
+                            <?php } ?>
 
-					
+                        </td>
+						<td class="gwc_list_caozuo">
+                            <a href="">收藏</a><a href="/flow/delete?id={{$v->cart_id}}" class="shop_good_delete">删除</a>
+                        </td>
+					</tr>
+                    <?php $str = $str+$v->goods_price * $v->buy_number; ?>
+                @endforeach
 				</tbody>
 				<tfoot>
 					<tr>
 						<td colspan="6">
-							<div class="gwc_foot_zongjia">商品总价(不含运费)<span>￥<strong id="good_zongjia">12750.00</strong></span></div>
+							<div class="gwc_foot_zongjia">商品总价(不含运费)<span>￥<strong id="good_zongjia">{{$str}} </strong></span></div>
 							<div class="clear"></div>
 							<div class="gwc_foot_links">
-								<a href="/index" class="go">继续购物</a>
-								<a href="/flow2" class="op">确认并填写订单</a>
+								<a href="" class="go">继续购物</a>
+								<a href="/flow2?id={{$v->goods_id}}" class="op">确认并填写订单</a>
 							</div>
 						</td>
 					</tr>
@@ -76,7 +147,7 @@
 			<!-- 购物车列表 End -->
 		</div>
 		<!-- 购物车有商品 end -->
-
+        <?php } ?>
 	</div>
 	<!-- 购物车 Body End -->
 @stop
