@@ -6,25 +6,32 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 class IndexController extends Controller
 {
+    /**
+     * 前台页面
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-    	$date= DB::table('goods')->get();
-        $new=DB::table('goods')->where('is_new','=','1')->limit(4)->get();
-        $hot=DB::table('goods')->where('is_hot','=','1')->limit(4)->get();
-        $best=DB::table('goods')->where('is_best','=','1')->limit(4)->get();
-        return view('frontend.index',['date'=>$date,'new'=>$new,'hot'=>$hot,'best'=>$best]);
+        //轮播图查询
+        $date = DB::table('goods')->limit(4)->get();
+        //分类查询
+        $info = DB::table('category')->get();
+        //转换为关联数组
+        $one = json_decode(json_encode($info),'true');
+        $one = $this->getlist($one);
+        return view('frontend.index',['date'=>$date,'one'=>$one]);
     }
-    public function find(){
-//        $is_new = request('is_new');
-//        $is_hot = request('is_hot');
-//        $is_best = request('is_best');
-//        if(!$is_new){
-//
-//        }
-        $data=DB::table('goods')->where('is_new','=','1')->limit(4)->get();
-        $data=DB::table('goods')->where('is_hot','=','1')->limit(4)->get();
-        $data=DB::table('goods')->where('is_best','=','1')->limit(4)->get();
-
+    public function getlist($data,$id=0)
+    {
+        $arr = array();
+        foreach ($data as $val) {
+            if($val['parent_id'] == $id)
+            {
+                $val['child'] = $this->getlist($data,$val['cat_id']);
+                $arr[] = $val;
+            }
+        }
+        return $arr;
     }
 
 }

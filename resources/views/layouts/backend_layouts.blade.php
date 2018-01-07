@@ -25,7 +25,7 @@
     <li class="noRight"><a href="/admin/Module">DouPHP+</a></li>
    </ul>
    <ul class="navRight">
-    <li class="M noLeft"><a href="JavaScript:void(0);">您好，admin</a>
+    <li class="M noLeft"><a href="JavaScript:void(0);">您好，{{\Session::get('admin')['name']}}</a>
      <div class="drop mUser">
       <a href="manager.php?rec=edit&id=1">编辑我的个人资料</a>
       <a href="manager.php?rec=cloud_account">设置云账户</a>
@@ -58,8 +58,8 @@
  </ul>
    <ul class="bot">
   <li><a href="/admin/Backup"><i class="backup"></i><em>数据备份</em></a></li>
-  <li><a href="/admin/Mobile"><i class="mobile"></i><em>手机版</em></a></li>
-  <li><a href="/admin/Theme"><i class="theme"></i><em>设置模板</em></a></li>
+  <li><a href="/admin/Mobile"><i class="mobile"></i><em>仓库管理</em></a></li>
+  <li><a href="/admin/Theme"><i class="theme"></i><em>仓库列表</em></a></li>
   <li><a href="/admin/Manager"><i class="manager"></i><em>网站管理员</em></a></li>
   <li><a href="/admin/Manager_log"><i class="managerLog"></i><em>操作记录</em></a></li>
  </ul>

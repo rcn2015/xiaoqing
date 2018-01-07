@@ -1,12 +1,22 @@
 @extends('layouts.frontend_layouts')
 @section('content')	
+<base href="/frotend/">
 <title>订单</title>
 <!-- Header End -->	
 
 	<!-- 我的个人中心 -->
 	<div class="shop_member_bd clearfix">
+			<!-- 购物流程导航 -->
+			<div class="shop_gwc_bd_contents_lc clearfix">
+				<ul>
+					<li class="step_a">确认购物清单</li>
+					<li class="step_b">确认收货人资料及送货方式</li>
+					<li class="step_c hover_c">购买完成</li>
+				</ul>
+			</div>
 		<!-- 左边导航 -->
 		<div class="shop_member_bd_left clearfix">
+
 			
 			<div class="shop_member_bd_left_pic">
 				<a href="javascript:void(0);"><img src="images/avatar.png" /></a>

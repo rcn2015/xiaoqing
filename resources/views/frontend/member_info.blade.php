@@ -1,5 +1,6 @@
 @extends('layouts.frontend_layouts')
 @section('content')
+<base href="/frotend/">
 	<title>修改个人资料</title>
 	<div class="clear"></div>
 	<!-- 面包屑 注意首页没有 -->
@@ -37,7 +38,7 @@
 				<dt>我的账户</dt>
 				<dd><span><a href="">个人资料</a></span></dd>
 				<dd><span><a href="">密码修改</a></span></dd>
-				<dd><span><a href="">收货地址</a></span></dd>
+				<dd><span><a href="address">收货地址</a></span></dd>
 			</dl>
 
 		</div>

@@ -2,26 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" href="frotend/css/base.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/address.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/shop_common.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/shop_header.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/shop_manager.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/shop_form.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/shop_gouwuche.css" type="text/css" />
-	 <link rel="stylesheet" href="frotend/css/shop_home.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/shop_list.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/shop_goods.css" type="text/css" />
-	<link rel="stylesheet" href="frotend/css/shop_shdz_835.css" type="text/css" />
-    <script type="text/javascript" src="frotend/js/jquery.js" ></script>
-    <script type="text/javascript" src="frotend/js/topNav.js" ></script>
-    <script type="text/javascript" src="frotend/js/shop_goods.js" ></script>
-    <script type="text/javascript" src="frotend/js/jquery.goodnums.js" ></script>
-    <script type="text/javascript" src="frotend/js/shop_gouwuche.js" ></script>
-    <script type="text/javascript" src="frotend/js/shop_home_tab.js" ></script>
-    <script type="text/javascript" src="frotend/js/focus.js" ></script>
-    <script type="text/javascript" src="frotend/js/shop_list.js" ></script>
-    <script type="text/javascript" src="frotend/js/liandong.js" ></script>
+	<link rel="stylesheet" href="/frotend/css/address.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/base.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_common.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_header.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_manager.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_form.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_gouwuche.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_home.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_list.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_goods.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_shdz_835.css" type="text/css" />
+	<link rel="stylesheet" href="/frotend/css/shop_goodPic.css" type="text/css" />
+	<script type="text/javascript" src="/frotend/js/shop_goodPic_base.js"></script>
+	<script type="text/javascript" src="/frotend/js/lib.js"></script>
+	<script type="text/javascript" src="/frotend/js/shop_goods_tab.js"></script>
+	<script type="text/javascript" src="/frotend/js/163css.js"></script>
+    <script type="text/javascript" src="/frotend/js/jquery.js" ></script>
+    <script type="text/javascript" src="/frotend/js/topNav.js" ></script>
+    <script type="text/javascript" src="/frotend/js/shop_goods.js" ></script>
+    <script type="text/javascript" src="/frotend/js/jquery.goodnums.js" ></script>
+    <script type="text/javascript" src="/frotend/js/shop_gouwuche.js" ></script>
+    <script type="text/javascript" src="/frotend/js/shop_home_tab.js" ></script>
+    <script type="text/javascript" src="/frotend/js/focus.js" ></script>
+    <script type="text/javascript" src="/frotend/js/shop_list.js" ></script>
 
 
 </head>
@@ -31,12 +35,16 @@
 		<!-- Header TopNav -->
 		<div class="shop_hd_topNav">
 			<div class="shop_hd_topNav_all">
-				<!-- Header TopNav Left -->
+				@if (\Session::has('user_id'))						
 				<div class="shop_hd_topNav_all_left">
-					<p>您好，欢迎来到<b><a href="/">ShopCZ商城</a></b>[<a href="">登录</a>][<a href="">注册</a>]</p>
+					<p>您好    <font color="#FF0000">{{\Session::get('uname')}}</font> ，欢迎来到<b><a href="/">ShopCZ商城</a></b></p>
 				</div>
+				@else
 				<!-- Header TopNav Left End -->
-
+				<div class="shop_hd_topNav_all_left">
+					<p>您好，欢迎来到<b><a href="/">ShopCZ商城</a></b>[<a href="/login">登录</a>][<a href="/register">注册</a>]</p>
+				</div>
+				@endif
 				<!-- Header TopNav Right -->
 				<div class="shop_hd_topNav_all_right">
 					<ul class="topNav_quick_menu">
@@ -47,8 +55,8 @@
 								<div class="topNav_menu_bd" style="display:none;" >
 						            <ul>
 						              <li><a title="已买到的商品" target="_top" href="#">已买到的商品</a></li>
-						              <li><a title="个人主页" target="_top" href="#">个人主页</a></li>
-						              <li><a title="我的好友" target="_top" href="#">我的好友</a></li>
+						              <li><a title="个人主页" target="_top" href="/member">个人主页</a></li>
+						              <li><a title="我的好友" target="_top" href="/index">我的好友</a></li>
 						            </ul>
 						        </div>
 							</div>
@@ -67,7 +75,7 @@
 
 						<li>
 							<div class="topNav_menu">
-								<a href="#" class="topNavHover">购物车<b>0</b>种商品<i></i></a>
+								<a href="/flow" class="topNavHover">购物车<b>0</b>种商品<i></i></a>
 								<div class="topNav_menu_bd" style="display:none;">
 									<!--
 						            <ul>
@@ -85,8 +93,8 @@
 								<a href="#" class="topNavHover">我的收藏<i></i></a>
 								<div class="topNav_menu_bd" style="display:none;">
 						            <ul>
-						              <li><a title="收藏的商品" target="_top" href="#">收藏的商品</a></li>
-						              <li><a title="收藏的店铺" target="_top" href="#">收藏的店铺</a></li>
+						              <li><a title="收藏的商品" target="_top" href="/favorite">收藏的商品</a></li>
+						              <li><a title="收藏的店铺" target="_top" href="/favorite">收藏的店铺</a></li>
 						            </ul>
 						        </div>
 							</div>
